@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src https://xgexlltnzsismfqfwqab.supabase.co wss://xgexlltnzsismfqfwqab.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0b0f14">
+<meta name="description" content="LETHEA — şifrələnmiş messenger">
+<title>LETHEA</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+
+<main id="login" class="screen" hidden>
+  <div class="brand">
+    <div class="logo">LETHEA</div>
+    <div class="tag">ENCRYPTED MESSENGER</div>
+  </div>
+
+  <section class="card invite-banner" id="inviteCard" hidden>
+    <h2>Dəvət</h2>
+    <p id="inviteText"></p>
+    <button class="primary" id="inviteJoin">Qoşul</button>
+  </section>
+
+  <section class="card">
+    <h2>Adın</h2>
+    <input id="nick" maxlength="24" autocomplete="nickname" spellcheck="false">
+  </section>
+
+  <section class="card">
+    <h2>Otağa gir</h2>
+    <input id="password" type="password" placeholder="Otaq şifrəsi və ya dəvət kodu" autocomplete="off" spellcheck="false">
+    <input id="saveName" maxlength="32" placeholder="Yadda saxlamaq üçün ad (istəyə görə)">
+    <p class="muted warn-text" id="weak" hidden>⚠ Bu şifrə qısadır — mesajları sındırmaq asan olar. Güclü şifrə üçün yeni otaq yarat.</p>
+    <div class="row">
+      <button class="primary grow" id="enter">Gir</button>
+      <button id="newRoom">＋ Yeni otaq</button>
+    </div>
+  </section>
+
+  <section class="card" id="roomsCard" hidden>
+    <h2>Saxlanmış otaqlar</h2>
+    <div id="rooms" class="rooms"></div>
+  </section>
+
+  <section class="card">
+    <h2>Kimlik</h2>
+    <div class="row"><span class="muted">Barmaq izi</span><span class="fp" id="fp">…</span></div>
+    <p class="muted">Mesajların bu açarla imzalanır — başqası sənin adından yaza bilməz. Terminaldakı kimliyini bura köçürə bilərsən.</p>
+    <div class="row">
+      <button class="grow" id="idExport">Köçür</button>
+      <button class="grow" id="idImport">Gətir</button>
+    </div>
+  </section>
+
+  <footer class="muted center" id="footer"></footer>
+</main>
+
+<main id="chat" class="screen" hidden>
+  <header class="bar">
+    <button class="icon" id="back" aria-label="Geri">←</button>
+    <div class="title">
+      <b id="roomName">Otaq</b>
+      <small id="online">…</small>
+    </div>
+    <span id="rt" class="rt" title="Realtime" hidden>⚡</span>
+    <button class="icon" id="menuBtn" aria-label="Menyu">⋯</button>
+  </header>
+  <div id="log" aria-live="polite"></div>
+  <div class="status" id="status"></div>
+  <div class="replybar" id="replyBar" hidden><span id="replyText"></span><button class="icon small" id="replyX" aria-label="Ləğv et">✕</button></div>
+  <form class="composer" id="composer">
+    <button type="button" class="icon" id="attach" aria-label="Fayl">📎</button>
+    <input type="file" id="file" hidden>
+    <textarea id="input" rows="1" placeholder="Mesaj… (/help)" autocomplete="off" enterkeyhint="send"></textarea>
+    <button class="icon send" id="send" aria-label="Göndər">➤</button>
+  </form>
+</main>
+
+<div id="loading" class="loading" hidden><div class="spin"></div><p id="loadingText">…</p></div>
+<dialog id="dlg"></dialog>
+<div id="toast" role="status"></div>
+</body>
+</html>

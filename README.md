@@ -1,8 +1,14 @@
 # LETHEA
 
-Şifrələnmiş terminal messenger. Mesajlar və fayllar sənin kompüterində şifrələnir, server yalnız oxunmaz məlumat görür.
+Şifrələnmiş messenger: terminal və telefon. Mesajlar və fayllar sənin cihazında şifrələnir, hər mesaj imzalanır, server yalnız oxunmaz məlumat görür.
 
 ## Quraşdırma
+
+### Telefon (və ya istənilən brauzer)
+
+Heç nə quraşdırmaq lazım deyil: **<https://l-walkerg.github.io/lethea/>**
+
+Dostun sənə dəvət linki göndəribsə, sadəcə linkə toxun.
 
 ### Windows
 
@@ -24,13 +30,13 @@ Sonra `lethea` yaz.
 
 ## İstifadə
 
-1. `lethea` yaz və menyudan **[1] Otağa gir** seç.
-2. Dostunla razılaşdığınız otaq şifrəsini yaz. Eyni şifrəni yazanlar eyni otağa düşür.
-3. Çatda `/help` yaz, bütün əmrləri görəcəksən: fayl göndərmək, mesajı düzəltmək, kim onlayndır və s.
+1. Dəvət almısansa: `lethea join L4-…`. Dəvətdəki sətir proqramı həm quraşdırır, həm də səni otağa salır.
+2. Özün otaq açmaq üçün: `lethea` yaz, menyudan **Yeni otaq yarat + dəvət** seç və dəvəti dostuna göndər.
+3. Çatda `/help` yaz: cavab, reaksiya, 🔒 şəxsi mesaj, fayl, axtarış, yox olan mesajlar və s.
 
 ## Yeniləmə
 
-Quraşdırma əmrini yenidən işlət, ən son versiya yüklənəcək.
+Yeni versiya çıxanda proqram açılışda özü soruşur: **Enter** bas, yenilənsin. Əl ilə yeniləmək üçün: `lethea --update`. Veb versiya həmişə ən sonuncudur.
 
 ## Silmək
 
