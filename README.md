@@ -1,5 +1,7 @@
 # LETHEA
 
+Şifrələnmiş terminal messenger. Mesajlar və fayllar sənin kompüterində şifrələnir, server yalnız oxunmaz məlumat görür.
+
 ## Quraşdırma
 
 ### Windows
