@@ -1,9 +1,9 @@
 // LETHEA veb klienti — interfeys. Protokol və şifrələmə web/lethea.js-dədir.
 import * as L from "./lethea.js";
 
-const SUPABASE_URL = "https://xgexlltnzsismfqfwqab.supabase.co";
-const SUPABASE_KEY = "sb_publishable_2BJfAWkWdgLaYEPCVZDIgQ_rYw7KcJE";
-const VERSION = "4.0";
+const RELAY_URL = atob("aHR0cHM6Ly94Z2V4bGx0bnpzaXNtZnFmd3FhYi5zdXBhYmFzZS5jbw=="); // server ünvanı
+const RELAY_KEY = "sb_publishable_2BJfAWkWdgLaYEPCVZDIgQ_rYw7KcJE";
+const VERSION = "4.1";
 const RELEASES = "L-WalkerG/lethea";
 const WEB_URL = "https://l-walkerg.github.io/lethea/";
 const PALETTE = ["#ff5f5f", "#ffaf00", "#ffff5f", "#87ff87", "#5fffff", "#87afff",
@@ -40,7 +40,7 @@ cfg.nick ??= "qonaq" + Math.floor(100 + Math.random() * 900);
 cfg.sound ??= true;
 cfg.notify ??= false;
 
-const db = new L.Supabase(SUPABASE_URL, SUPABASE_KEY);
+const db = new L.Relay(RELAY_URL, RELAY_KEY);
 let ident = null, core = null, current = null, chatReady = false, pendingInvite = null;
 let replyTo = null, editing = null, hiddenTimer = null, unseen = 0;
 const els = new Map(), pendingSys = [], unread = new Map(), roomCache = new Map();
@@ -86,7 +86,7 @@ function handleError(e) {
   if (detail.includes("expires_at")) {
     if (core) core.ttl = null;
     updateStatus();
-    toast("✗ Yox olan mesajlar üçün Supabase-də yeni SQL lazımdır — ⏳ bağlandı", 4500);
+    toast("✗ Yox olan mesajlar üçün serverdə yeniləmə lazımdır — ⏳ bağlandı", 4500);
   } else if (detail.includes("rate limit")) toast("Çox tez-tez yazırsan — bir az gözlə", 4000);
   else toast("✗ " + detail, 4000);
 }
@@ -127,7 +127,7 @@ function inviteLines(code) {
     ["Telefon (brauzer)", `${WEB_URL}#${code}`],
     ["Windows (PowerShell) — quraşdırıb dərhal qoşulur",
       `irm https://raw.githubusercontent.com/${RELEASES}/main/install.ps1 | iex; lethea join ${code}`],
-    ["Linux — quraşdırıb dərhal qoşulur",
+    ["Linux / macOS — quraşdırıb dərhal qoşulur",
       `curl -fsSL https://raw.githubusercontent.com/${RELEASES}/main/install.sh | sh && ~/.local/bin/lethea join ${code}`],
     ["LETHEA artıq quraşdırılıbsa", `lethea join ${code}`],
   ];
@@ -468,7 +468,7 @@ async function search(q) {
 }
 async function setTTL(arg) {
   const apply = async (sec) => {
-    if (sec && !(await db.supportsTTL())) return toast("✗ Bunun üçün Supabase-də yeni SQL işlədilməlidir", 4500);
+    if (sec && !(await db.supportsTTL())) return toast("✗ Bunun üçün serverdə yeniləmə lazımdır", 4500);
     core.ttl = sec;
     updateStatus();
     toast(sec ? `⏳ Mesajların ${L.fmtTTL(sec)} sonra hamıda yox olacaq` : "⏳ Yox olan mesajlar bağlandı");

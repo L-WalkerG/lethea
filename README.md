@@ -20,6 +20,16 @@ irm https://raw.githubusercontent.com/L-WalkerG/lethea/main/install.ps1 | iex
 
 Bitəndən sonra `lethea` yaz. Proqram Start menyusunda **LETHEA** adı ilə də görünəcək.
 
+### macOS
+
+**Terminal**-ı aç (`Cmd + Space`, `terminal` yaz, Enter) və bu sətri yapışdır:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/L-WalkerG/lethea/main/install.sh | sh
+```
+
+Bitəndən sonra **yeni** Terminal pəncərəsi aç və `lethea` yaz. Apple Silicon (M1, M2, M3…) və Intel Mac-lar dəstəklənir.
+
 ### Linux
 
 ```bash
@@ -46,7 +56,7 @@ Windows:
 irm https://raw.githubusercontent.com/L-WalkerG/lethea/main/uninstall.ps1 | iex
 ```
 
-Linux:
+Linux / macOS:
 
 ```bash
 rm -rf ~/.local/share/lethea ~/.local/bin/lethea

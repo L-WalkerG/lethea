@@ -377,11 +377,11 @@ export function fmtHTML(text, me) {
   return out + esc(text.slice(pos));
 }
 
-// ------------------------------------------------------------------ Supabase
+// ------------------------------------------------------------------ server
 export class HttpError extends Error {
   constructor(status, message) { super(`HTTP ${status} ${message || ""}`.trim()); this.status = status; this.detail = message || ""; }
 }
-export class Supabase {
+export class Relay {
   constructor(url, key) { this.url = url.replace(/\/$/, ""); this.key = key; this.skew = 0; this._ttl = null; }
   now() { return Date.now() / 1000 + this.skew; }
   async req(method, path, { query, body, headers = {}, raw = false } = {}) {
